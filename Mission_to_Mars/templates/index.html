@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Web-Scraping-Challenge</title>
+  </head>
+  <body>
+    <h1></h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <br>
+                <H1 class="d-flex justify-content-center"> Mission to Mars</H1>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button type="button" class="btn btn-primary btn-md" href="/scrape" role="button">Scrape New Data</button>
+                </div>
+                <br>
+            </div>
+
+        </div>
+        
+    </div>
+<!-- Mars Info -->
+
+<!-- Latest News -->
+    <div class="container">
+        <br>
+        <div class="row">
+            <h2 class="d-flex justify-content-left"> Latest Mars News</h2>
+            <h3style="font-size: 15px">{{mars_info.title}}</h3>
+            <p>{{mars_info.summary}}</p>
+        </div>
+<!-- Featured Image -->
+        <br>
+        <div class="row">
+          <div class="col-sm-8">
+            <div>
+                <h2 class="d-flex justify-content-left">Featured Image</h2>
+                <img href="{{mars_info.feature_image}}" alt="Featured Mars Image" id="featured-image">  
+            </div>
+          </div>
+        
+            
+<!-- Mars Facts Table -->
+        <div class="col-sm-4">
+            <h2 class="d-flex justify-content-left">Mars Facts</h2>
+            {{mars_info.mars_facts|safe}}
+        </div>
+        </div>
+
+<!-- Hemisphere Info -->
+        <br>
+        <div class="row">
+            <h2 class="d-flex justify-content-left" > Mars Hemispheres</h2> 
+        </div>        
+        <div class="row">
+            {% for item in mars_info.hemisphere_info %}
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" href="{{item.image_url}}" alt="{{item.title}}" id="feature_image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.title}}</h5>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+
+  </body>
+</html>
