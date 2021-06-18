@@ -1,19 +1,17 @@
-# Dependencies
-from splinter import Browser
-from bs4 import BeautifulSoup as bs
-import time
-from webdriver_manager.chrome import ChromeDriverManager
-import pandas as pd
+def scrape():
+    # Dependencies
+    from splinter import Browser
+    from bs4 import BeautifulSoup as bs
+    from webdriver_manager.chrome import ChromeDriverManager
+    import pandas as pd
 
-def scrape_info():
-#
     #Chrome driver set up
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
 
     mars_info = {}
 
-#def scrape_info():
+    #def scrape_info():
     #Visit NASA site
     url = 'https://www.redplanetscience.com'
     browser.visit(url)
@@ -111,14 +109,9 @@ def scrape_info():
 
     # Close the browser after scraping
     browser.quit()
-        
-    # mars_data = {mars_news, feature_image, mars_facts, hemisphere_image_urls}
-    #              "article_summary": article_summary, 
-    #              "featured_image_url1": featured_image_url1, 
-    #              "html_table": html_table, 
-    #              "hemi_image_url": hemisphere_image_urls}
+
     return mars_info
-# collection.insert(mars_data)
+
 
 
 
